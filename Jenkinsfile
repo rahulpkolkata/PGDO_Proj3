@@ -3,11 +3,11 @@ node {
     def application = "devopsexample"
     
     //Its mandatory to change the Docker Hub Account ID after this Repo is forked by an other person
-    def dockerhubaccountid = "vikidvg"
+    def dockerhubaccountid = "rahulpandey"
 	
     // reference to maven
     // ** NOTE: This 'maven-3.5.2' Maven tool must be configured in the Jenkins Global Configuration.   
-    def mvnHome = tool 'maven-3.5.2'
+   // def mvnHome = tool 'maven-3.8.6'
 
     // holds reference to docker image
     def dockerImage
@@ -16,17 +16,18 @@ node {
     
     stage('Clone Repo') { 
       // Get some code from a GitHub repository
-      git url:'https://github.com/vdharmaraj/PGDO_Proj3.git',branch:'main' //update your forked repo
+     //git url:'https://github.com/vdharmaraj/PGDO_Proj3.git',branch:'main' //update your forked repo
+      git url:'https://github.com/rahulpkolkata/PGDO_Proj3.git',branch:'main'    
       // Get the Maven tool.
       // ** NOTE: This 'maven-3.5.2' Maven tool must be configured
       // **       in the global configuration.           
-      mvnHome = tool 'maven-3.5.2'
+    //  mvnHome = tool 'maven-3.8.6'
     }    
   
-    stage('Build Project') {
+  //  stage('Build Project') {
       // build project via maven
-      sh "'${mvnHome}/bin/mvn' clean install"
-    }
+ //     sh "'${mvnHome}/bin/mvn' clean install"
+//    }
 		
     stage('Build Docker Image with new code') {
       // build docker image
